@@ -43,18 +43,18 @@ A Rest API for RING.exe
   | 500 | Error while getting the file |
 
   Other non-mandatory parameters:
-  ```bash
+  ```
   {
-    seq_sep: Unsigned int,
-    bond_control: ['strict','weak'],
-    interaction_type: ['all','multiple','one'],
-    net_policy: ['closest','ca','cb'],
-    h_bond: Float,
-    vdw_bond: Float,
-    ionic_bond: Float,
-    generic_bond: Float,
-    pication_bond: Float,
-    pipistack_bond: Float,
-    force: Boolean
+    seq_sep: Unsigned int (default 3),
+    bond_control: ['strict','weak'] (default strict),
+    interaction_type: ['all','multiple','one'] (default all),
+    net_policy: ['closest','ca','cb'] (default closest),
+    h_bond: Float (default 3.5),
+    vdw_bond: Float (default 0.5),
+    ionic_bond: Float (default 4),
+    generic_bond: Float (default 6),
+    pication_bond: Float (default 5),
+    pipistack_bond: Float (default 6.5),
+    force: Boolean (default false)
   }
   ```
