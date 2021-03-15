@@ -43,7 +43,7 @@ A Rest API for RING.exe
   | 500 | Error while getting the file |
 
   Other non-mandatory parameters:
-  ```
+  ```json
   {
     seq_sep: Unsigned int (default 3),
     bond_control: ['strict','weak'] (default strict),
