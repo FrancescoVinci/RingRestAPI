@@ -56,7 +56,7 @@ A Rest API for RING.exe
     generic_bond: Float,                            //(default 6)
     pication_bond: Float,                           //(default 5)
     pipistack_bond: Float,                          //(default 6.5)
-    force: Boolean                                  // (default false)
+    force: Boolean                                  //(default false)
   }
   ```
 
@@ -76,16 +76,16 @@ A Rest API for RING.exe
   Other non-mandatory parameters:
   ```
   {
-    seq_sep: Unsigned int (default 3),
-    bond_control: ['strict','weak'] (default strict),
-    interaction_type: ['all','multiple','one'] (default all),
-    net_policy: ['closest','ca','cb'] (default closest),
-    h_bond: Float (default 3.5),
-    vdw_bond: Float (default 0.5),
-    ionic_bond: Float (default 4),
-    generic_bond: Float (default 6),
-    pication_bond: Float (default 5),
-    pipistack_bond: Float (default 6.5),
-    force: Boolean (default false)
+    seq_sep: Unsigned int,                          //(default 3)
+    bond_control: ['strict','weak'],                //(default strict)
+    interaction_type: ['all','multiple','one'],     //(default all)
+    net_policy: ['closest','ca','cb'],              //(default closest)
+    h_bond: Float,                                  //(default 3.5)
+    vdw_bond: Float,                                //(default 0.5)
+    ionic_bond: Float,                              //(default 4)                                              
+    generic_bond: Float,                            //(default 6)
+    pication_bond: Float,                           //(default 5)
+    pipistack_bond: Float,                          //(default 6.5)
+    force: Boolean                                  //(default false)
   }
   ```
