@@ -95,18 +95,7 @@ A Rest API for RING.exe
   ### Post request
   
   ```
-  http://myexamplesite/api/requestxml/fromname
-  ```
-  Sample Json:
-  ```
-  {
-    "pdbname" : "6a90.pdb",
-    "seq_sep" : "5",
-    "bond_control" : "strict",
-    "net_policy" : "one",
-    "h_bond" : "4.5",
-    "ionic_bond" : "5"
-  }
+  http://myexamplesite/api/ispresent/6a90.pdb
   ```
   Response:
   ```
@@ -120,7 +109,20 @@ A Rest API for RING.exe
     }
   }
   ```
-  
+  ### Get Request
+  ```
+  http://myexamplesite/api/requestxml/fromname
+  ```
+  Response:
+  ```
+  {
+    "response": "success",
+    "data": {
+        "code": 200,
+        "message": "File exists"
+    }
+  }
+  ```
   
   
   
