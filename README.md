@@ -95,7 +95,7 @@ A Rest API for RING.exe
   ### Post request
   
   ```
-  http://myexamplesite/api/ispresent/6a90.pdb
+  http://myexamplesite/api/requestxml/fromname
   ```
   Response:
   ```
@@ -111,7 +111,7 @@ A Rest API for RING.exe
   ```
   ### Get Request
   ```
-  http://myexamplesite/api/requestxml/fromname
+  http://myexamplesite/api/ispresent/6a90.pdb
   ```
   Response:
   ```
