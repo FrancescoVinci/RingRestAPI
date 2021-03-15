@@ -97,6 +97,18 @@ A Rest API for RING.exe
   ```
   http://myexamplesite/api/requestxml/fromname
   ```
+  Sample Json:
+  ```
+  {
+    "pdbname" : "6a90.pdb",
+    "seq_sep" : "5",
+    "bond_control" : "weak",
+    "net_policy" : "ca",
+    "h_bond" : "4.5",
+    "ionic_bond" : "4.6"
+  }
+  
+  ```
   Response:
   ```
   {
@@ -104,7 +116,7 @@ A Rest API for RING.exe
     "data": {
         "code": 200,
         "message": "Processing completed successfully",
-        "log": "[2021-03-15 20:41:58.005] [main] [info] params summary: {net_policy:\"ca\", generic_bond:6, seq_sep:5, bond_control:\"strict\",               interaction_type:\"all\"}\r\n[2021-03-15 20:41:58.051] [main] [info] found 693 generic bonds\r\n",
+        "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
         "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ...
     }
   }
