@@ -89,3 +89,6 @@ A Rest API for RING.exe
     force: Boolean                                  //(default false)
   }
   ```
+  
+  ## Usage
+  Some examples of use
