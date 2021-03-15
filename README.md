@@ -15,7 +15,6 @@ A Rest API for RING.exe
   | ----------- |----------- |
   | 200 | File exists |
   | 404 | File does not exist |
-  | 500 | Internal error |
 
 - `/getpdb/{pdbname.pdb}` (*es. 6a90.pdb*)
   | Method     | Parameters required | Description | 
