@@ -40,7 +40,8 @@ A Rest API for RING.exe
   | ----------- |----------- |
   | 200 | Returns an xml |
   | 404 | File does not exist in rcbs.org |
-  | 500 | Internal error |
+  | 400 | Internal error |
+  | 500 | Bad request, enter all required parameters |
 
   Other non-mandatory parameters:
   ```
@@ -69,6 +70,7 @@ A Rest API for RING.exe
   | Status Code | Response |
   | ----------- |----------- |
   | 200 | Returns an xml |
+  | 400 | Bad request, enter all required parameters |
   | 500 | Internal error |
 
   Other non-mandatory parameters:
