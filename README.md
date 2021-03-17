@@ -3,7 +3,7 @@
 A Rest API for RING.exe
 
 ## Endpoint
-- `/ispresent/{pdbname.pdb}`
+- `/ispresent/{pdbname.pdb}` *es. 6a90.pdb*
 
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
@@ -17,7 +17,7 @@ A Rest API for RING.exe
   | 🔴 404 | File does not exist |
   | 🟡 500 | Internal Error |
 
-- `/getpdb/{pdbname.pdb}` (*es. 6a90.pdb*)
+- `/getpdb/{pdbname.pdb}` *es. 6a90.pdb*
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
   | GET | *{pdbname.pdb}* | Returns the specified .pdb file, if it exists in files.rcsb.org |
@@ -136,8 +136,4 @@ A Rest API for RING.exe
     }
   }
   ```
-  
-  
-  
-  
-  
+ 
