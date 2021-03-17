@@ -1,6 +1,7 @@
 # RingRestAPI
 
-A Rest API for RING.exe
+A Rest API for **RING.exe**.
+The *RingRestAPI* is organized around REST. The API has predictable URLs, accepts *form-encoded* and *JSON-encoded* request bodies, returns JSON-encoded responses, and uses standard HTTP response codes and verbs.
 
 ## Endpoint
 - `/ispresent/{pdbname.pdb}` *es. 6a90.pdb*
