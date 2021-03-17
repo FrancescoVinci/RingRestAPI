@@ -53,7 +53,7 @@ A Rest API for RING.exe
     net_policy: ['closest','ca','cb'],              //default closest
     h_bond: Float,                                  //default 3.5
     vdw_bond: Float,                                //default 0.5
-    ionic_bond: Float,                              //default 4)                                             
+    ionic_bond: Float,                              //default 4
     generic_bond: Float,                            //default 6
     pication_bond: Float,                           //default 5
     pipistack_bond: Float,                          //default 6.5
@@ -74,7 +74,7 @@ A Rest API for RING.exe
   | 🟠 400 | Bad request, enter all required parameters |
   | 🟡 500 | Internal error |
 
-  Other non-mandatory parameters:
+  Other *non-mandatory* parameters:
   ```
   {
     seq_sep: Unsigned int,                          //default 3
