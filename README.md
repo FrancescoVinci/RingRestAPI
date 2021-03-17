@@ -102,7 +102,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   http://myexamplesite/api/requestxml/fromname
   ```
   Sample Json:
-  ```
+  ```JavaScript
   {
     "pdbname" : "6a90.pdb",
     "seq_sep" : "5",
@@ -114,14 +114,14 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   
   ```
   Response:
-  ```
+  ```JavaScript
   {
     "response": "success",
     "data": {
         "code": 200,
         "message": "Processing completed successfully",
         "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
-        "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ...
+        "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ... "
     }
   }
   ```
@@ -130,7 +130,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   http://myexamplesite/api/ispresent/6a90.pdb
   ```
   Response:
-  ```
+  ```JavaScript
   {
     "response": "success",
     "data": {
