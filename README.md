@@ -3,7 +3,7 @@
 A Rest API for **RING.exe**.\
 The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). The API has predictable URLs, accepts *form-encoded* and *JSON-encoded* request bodies, returns JSON-encoded responses, and uses standard HTTP response codes and verbs.
 
-## Endpoint
+## Endpoints
 - `/ispresent/{pdbname.pdb}` *es. 6a90.pdb*
 
   | Method     | Parameters required | Description | 
