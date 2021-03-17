@@ -21,7 +21,8 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
 - `/getpdb/{pdbname.pdb}` *es. 6a90.pdb*
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
-  | GET | *{pdbname.pdb}* | Returns the specified .pdb file, if it exists in files.rcsb.org |
+  | GET | *{pdbname.pdb}* | Returns the content of specified .pdb file, if it exists in files.rcsb.org |
+  
 
   Response:
 
@@ -34,15 +35,16 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
 - `/requestxml/fromname`
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
-  | POST | '*pdbname*' | Returns an xml of the specified .pdb |
+  | POST | '*pdbname*' | Returns the xml content of the processed .pdb |
+  returns the xml content of the processed pdb
 
   Response:
 
   | Status Code | Response |
   | ----------- |----------- |
-  | 🟢 200 | Returns an xml |
+  | 🟢 200 | Returns the xml content |
   | 🔴 404 | File does not exist in rcbs.org |
-  | 🟠 400 | Bad request, enter all required parameters|
+  | 🟠 400 | Bad request, it is necessary to enter all the required parameters |
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
@@ -65,7 +67,8 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
 - `/requestxml/fromcontent`
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
-  | POST | '*pdbname*' , '*content*' | Returns an xml from the content of a pdb |
+  | POST | '*pdbname*' , '*content*' | Returns xml content of processed . pdb content |
+  
 
   Response:
 
