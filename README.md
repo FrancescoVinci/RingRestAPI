@@ -48,7 +48,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
-  ```
+  ```javascript
   {
     seq_sep: Unsigned int,                          //default 3
     bond_control: ['strict','weak'],                //default strict
