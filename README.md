@@ -36,7 +36,6 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   | Method     | Parameters required | Description | 
   | ----------- | ----------- | ----------- | 
   | POST | '*pdbname*' | Returns the xml content of the processed .pdb |
-  returns the xml content of the processed pdb
 
   Response:
 
@@ -48,7 +47,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
-  ```javascript
+  ```JavaScript
   {
     seq_sep: Unsigned int,                          //default 3
     bond_control: ['strict','weak'],                //default strict
@@ -79,7 +78,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
-  ```
+  ```JavaScript
   {
     seq_sep: Unsigned int,                          //default 3
     bond_control: ['strict','weak'],                //default strict
