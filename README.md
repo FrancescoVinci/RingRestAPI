@@ -94,9 +94,9 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
   }
   ```
   
-  ## Usage
-  Some examples of use:
-  ### Post request
+## Usage
+Some examples of use:
+### Post request
   
   ```
   http://myexamplesite/api/requestxml/fromname
