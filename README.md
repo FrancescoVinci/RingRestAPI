@@ -186,6 +186,7 @@ Some examples of use:
 ## Error response
 Some examples of error:
 - **Missing mandatory field**
+
   `http://localhost:8002/api/requestxml/fromname`
   
    ```JavaScript
@@ -194,29 +195,29 @@ Some examples of error:
       "inic_bond" : "4.6"
    }
    ```
-   *pdbname missing*
+   (*pdbname missing*)
    
    Response:
    ```Javascript
-    {
-        "response": "error",
-        "error": {
-            "code": 400,
-            "message": {
-                "pdbname": {
-                    "name": "ValidatorError",
-                    "message": "File name is required",
-                    "properties": {
-                        "message": "File name is required",
-                        "type": "required",
-                        "path": "pdbname"
-                    },
-                    "kind": "required",
-                    "path": "pdbname"
-                }
-            }
-        }
-    }
+   {
+       "response": "error",
+       "error": {
+           "code": 400,
+           "message": {
+               "pdbname": {
+                   "name": "ValidatorError",
+                   "message": "File name is required",
+                   "properties": {
+                       "message": "File name is required",
+                       "type": "required",
+                       "path": "pdbname"
+                   },
+                   "kind": "required",
+                   "path": "pdbname"
+               }
+           }
+       }
+   }
    ```
 
 ## Built With
