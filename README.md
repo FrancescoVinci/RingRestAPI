@@ -103,9 +103,8 @@ http://ring.dais.unive.it:8002/api/{endpoints}
 Some examples of use:
 ### Post request
   
-  ```
-  http://ring.dais.unive.it:8002/api/requestxml/fromname
-  ```
+ - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+ 
   Sample Json:
   ```JavaScript
   {
@@ -130,6 +129,34 @@ Some examples of use:
     }
   }
   ```
+  
+  ```
+  http://ring.dais.unive.it:8002/api/requestxml/fromcontent
+  ```
+  
+  Sample Json:
+  ```JavaScript
+  {
+    "pdbname" : "6a90.pdb",
+    "content" : "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;...",
+    "h_bond" : "4.5",
+    "ionic_bond" : "4.6"
+  }
+  ```
+  Response:
+  ```JavaScript
+  {
+    "response": "success",
+    "data": {
+        "code": 200,
+        "message": "Processing completed successfully",
+        "log": "[2021-03-27 13:44:10.555] [main] [info] params summary: {net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}\n...,
+        "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}-->\n<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" ..."
+      }
+  }
+  ```
+  
+  
   ### Get Request
   ```
   http://ring.dais.unive.it:8002/api/ispresent/6a90.pdb
