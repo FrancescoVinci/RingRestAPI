@@ -247,11 +247,11 @@ Some examples of error:
                         "type": "max",
                         "max": 20,
                         "path": "seq_sep",
-                        "value": 400
+                        "value": 125
                     },
                     "kind": "max",
                     "path": "seq_sep",
-                    "value": 400
+                    "value": 125
                 }
             }
         }
