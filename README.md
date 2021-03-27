@@ -199,7 +199,7 @@ Some examples of error:
      (*pdbname missing*)
 
      Response:
-     ```Javascript
+     ```JavaScript
      {
          "response": "error",
          "error": {
@@ -220,6 +220,120 @@ Some examples of error:
          }
      }
      ```
+- **Out of bond error**
+
+  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+
+    Sample Json:
+    ```JavaScript
+    {
+        "pdbname" : "6a90.pdb",
+        "seq_sep" : "400"
+    }
+    ```
+    
+    Response:
+    ```JavaScript
+    {
+        "response": "error",
+        "error": {
+            "code": 400,
+            "message": {
+                "seq_sep": {
+                    "name": "ValidatorError",
+                    "message": "Enter UINTs less than 20",
+                    "properties": {
+                        "message": "Enter UINTs less than 20",
+                        "type": "max",
+                        "max": 20,
+                        "path": "seq_sep",
+                        "value": 400
+                    },
+                    "kind": "max",
+                    "path": "seq_sep",
+                    "value": 400
+                }
+            }
+        }
+    }
+    ```
+- **Type error**
+
+  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+    
+    Sample Json:
+    ```JavaScript
+    {
+        "pdbname" : "6a90.pdb",
+        "seq_sep" : "text"
+    }
+    ```
+    
+    Response:
+    ```JavaScript
+    {
+        "response": "error",
+        "error": {
+            "code": 400,
+            "message": {
+                "seq_sep": {
+                    "stringValue": "\"text\"",
+                    "kind": "Number",
+                    "value": "text",
+                    "path": "seq_sep",
+                    "reason": {
+                        "generatedMessage": true,
+                        "code": "ERR_ASSERTION",
+                        "actual": false,
+                        "expected": true,
+                        "operator": "=="
+                    }
+                }
+            }
+        }
+    }
+    ```
+- **Typo error**
+
+  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+
+    Sample Json:
+    ```JavaScript
+    {
+        "pdbname" : "6a90.pdb",
+        "net_policy" : "text"
+    }
+    ```
+    
+    Response:
+    ```JavaScript
+    {
+        "response": "error",
+        "error": {
+            "code": 400,
+            "message": {
+                "net_policy": {
+                    "name": "ValidatorError",
+                    "message": "`text` is not a valid enum value for path `net_policy`.",
+                    "properties": {
+                        "message": "`text` is not a valid enum value for path `net_policy`.",
+                        "type": "enum",
+                        "enumValues": [
+                            "closest",
+                            "ca",
+                            "cb"
+                        ],
+                        "path": "net_policy",
+                        "value": "text"
+                    },
+                    "kind": "enum",
+                    "path": "net_policy",
+                    "value": "text"
+                }
+            }
+        }
+    }
+    ```
 
 ## Built With
 * [Node.js](https://nodejs.org/it/) 
