@@ -2,7 +2,8 @@
 
 A Rest API for **RING.exe**.\
 The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). The API has predictable URLs, accepts *form-encoded* and *JSON-encoded* request bodies, returns JSON-encoded responses, and uses standard HTTP response codes and verbs.
-RingRestAPI is accessible after connecting via [Ca’ Foscari University VPN](https://www.unive.it/pag/41366/).
+
+RingRestAPI is accessible after connecting via [Ca’ Foscari University VPN](https://www.unive.it/pag/41366/) for staff members and students.
 
 ## Endpoints
 You can use the web service at:
