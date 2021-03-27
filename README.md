@@ -54,17 +54,17 @@ http://ring.dais.unive.it:8002/api/{endpoints}
   Other *non-mandatory* parameters:
   ```JavaScript
   {
-    seq_sep: Unsigned int,                          //default 3
-    bond_control: ['strict','weak'],                //default strict
-    interaction_type: ['all','multiple','one'],     //default all
-    net_policy: ['closest','ca','cb'],              //default closest
-    h_bond: Float,                                  //default 3.5
-    vdw_bond: Float,                                //default 0.5
-    ionic_bond: Float,                              //default 4
-    generic_bond: Float,                            //default 6
-    pication_bond: Float,                           //default 5
-    pipistack_bond: Float,                          //default 6.5
-    force: Boolean                                  //default false
+      seq_sep: Unsigned int,                          //default 3
+      bond_control: ['strict','weak'],                //default strict
+      interaction_type: ['all','multiple','one'],     //default all
+      net_policy: ['closest','ca','cb'],              //default closest
+      h_bond: Float,                                  //default 3.5
+      vdw_bond: Float,                                //default 0.5
+      ionic_bond: Float,                              //default 4
+      generic_bond: Float,                            //default 6
+      pication_bond: Float,                           //default 5
+      pipistack_bond: Float,                          //default 6.5
+      force: Boolean                                  //default false
   }
   ```
 
@@ -85,17 +85,17 @@ http://ring.dais.unive.it:8002/api/{endpoints}
   Other *non-mandatory* parameters:
   ```JavaScript
   {
-    seq_sep: Unsigned int,                          //default 3
-    bond_control: ['strict','weak'],                //default strict
-    interaction_type: ['all','multiple','one'],     //default all
-    net_policy: ['closest','ca','cb'],              //default closest
-    h_bond: Float,                                  //default 3.5
-    vdw_bond: Float,                                //default 0.5
-    ionic_bond: Float,                              //default 4
-    generic_bond: Float,                            //default 6
-    pication_bond: Float,                           //default 5
-    pipistack_bond: Float,                          //default 6.5
-    force: Boolean                                  //default false
+      seq_sep: Unsigned int,                          //default 3
+      bond_control: ['strict','weak'],                //default strict
+      interaction_type: ['all','multiple','one'],     //default all
+      net_policy: ['closest','ca','cb'],              //default closest
+      h_bond: Float,                                  //default 3.5
+      vdw_bond: Float,                                //default 0.5
+      ionic_bond: Float,                              //default 4
+      generic_bond: Float,                            //default 6
+      pication_bond: Float,                           //default 5
+      pipistack_bond: Float,                          //default 6.5
+      force: Boolean                                  //default false
   }
   ```
   
@@ -108,25 +108,25 @@ Some examples of use:
     Sample Json:
     ```JavaScript
     {
-      "pdbname" : "6a90.pdb",
-      "seq_sep" : "5",
-      "bond_control" : "weak",
-      "net_policy" : "ca",
-      "h_bond" : "4.5",
-      "ionic_bond" : "4.6"
+        "pdbname" : "6a90.pdb",
+        "seq_sep" : "5",
+        "bond_control" : "weak",
+        "net_policy" : "ca",
+        "h_bond" : "4.5",
+        "ionic_bond" : "4.6"
     }
 
     ```
     Response:
     ```JavaScript
     {
-      "response": "success",
-      "data": {
-          "code": 200,
-          "message": "Processing completed successfully",
-          "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
-          "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ... "
-      }
+        "response": "success",
+        "data": {
+            "code": 200,
+            "message": "Processing completed successfully",
+            "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
+            "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ... "
+        }
     }
     ```
   
@@ -135,21 +135,21 @@ Some examples of use:
     Sample Json:
     ```JavaScript
     {
-      "pdbname" : "6a90.pdb",
-      "content" : "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;...",
-      "h_bond" : "4.5",
-      "ionic_bond" : "4.6"
+        "pdbname" : "6a90.pdb",
+        "content" : "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;...",
+        "h_bond" : "4.5",
+        "ionic_bond" : "4.6"
     }
     ```
     Response:
     ```JavaScript
     {
-      "response": "success",
-      "data": {
-          "code": 200,
-          "message": "Processing completed successfully",
-          "log": "[2021-03-27 13:44:10.555] [main] [info] params summary: {net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}\n...,
-          "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}-->\n<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" ..."
+        "response": "success",
+        "data": {
+            "code": 200,
+            "message": "Processing completed successfully",
+            "log": "[2021-03-27 13:44:10.555] [main] [info] params summary: {net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}\n...,
+            "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}-->\n<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" ..."
         }
     }
     ```
@@ -162,11 +162,11 @@ Some examples of use:
     Response:
     ```JavaScript
     {
-      "response": "success",
-      "data": {
-          "code": 200,
-          "message": "File exists"
-      }
+        "response": "success",
+        "data": {
+            "code": 200,
+             "message": "File exists"
+        }
     }
     ```
  - `http://ring.dais.unive.it:8002/api/getpdb/6a90.pdb`
@@ -174,15 +174,51 @@ Some examples of use:
     Response:
     ```JavaScript
     {
-      "response": "success",
-      "data": {
-        "code": 200,
-        "message": "File exists",
-        "pdb": "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN    COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;..."  
-       }
-     }
+        "response": "success",
+        "data": {
+            "code": 200,
+            "message": "File exists",
+            "pdb": "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN    COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;..."  
+        }
+    }
     ```
-    
+
+## Error response
+Some examples of error:
+- **Missing mandatory field**
+  `http://localhost:8002/api/requestxml/fromname`
+  
+   ```JavaScript
+   {
+      "h_bond" : "4.5",
+      "inic_bond" : "4.6"
+   }
+   ```
+   *pdbname missing*
+   
+   Response:
+   ```Javascript
+    {
+        "response": "error",
+        "error": {
+            "code": 400,
+            "message": {
+                "pdbname": {
+                    "name": "ValidatorError",
+                    "message": "File name is required",
+                    "properties": {
+                        "message": "File name is required",
+                        "type": "required",
+                        "path": "pdbname"
+                    },
+                    "kind": "required",
+                    "path": "pdbname"
+                }
+            }
+        }
+    }
+   ```
+
 ## Built With
 * [Node.js](https://nodejs.org/it/) 
  
