@@ -48,7 +48,7 @@ http://ring.dais.unive.it:8002/api/{endpoints}
   | ----------- |----------- |
   | 🟢 200 | Returns the xml content |
   | 🔴 404 | File does not exist in rcbs.org |
-  | 🟠 400 | Bad request, it is necessary to enter all the required parameters |
+  | 🟠 400 | Bad request, enter all the required parameters or make sure the parameters are correct |
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
@@ -79,7 +79,7 @@ http://ring.dais.unive.it:8002/api/{endpoints}
   | Status Code | Response |
   | ----------- |----------- |
   | 🟢 200 | Returns an xml |
-  | 🟠 400 | Bad request, enter all required parameters |
+  | 🟠 400 | Bad request, enter all required parameters or and make sure the parameters are correct |
   | 🟡 500 | Internal error |
 
   Other *non-mandatory* parameters:
