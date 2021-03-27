@@ -99,7 +99,7 @@ Some examples of use:
 ### Post request
   
   ```
-  http://myexamplesite/api/requestxml/fromname
+  http://ring.dais.unive.it:8002/api/requestxml/fromname
   ```
   Sample Json:
   ```JavaScript
@@ -127,7 +127,7 @@ Some examples of use:
   ```
   ### Get Request
   ```
-  http://myexamplesite/api/ispresent/6a90.pdb
+  http://ring.dais.unive.it:8002/api/ispresent/6a90.pdb
   ```
   Response:
   ```JavaScript
