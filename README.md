@@ -187,7 +187,7 @@ Some examples of use:
 Some examples of error:
 - **Missing mandatory field**
 
-  `http://localhost:8002/api/requestxml/fromname`
+  `http://ring.dais.unive.it:8002/api/requestxml/fromname`
   
   Sample Json:
    ```JavaScript
