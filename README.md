@@ -155,20 +155,32 @@ Some examples of use:
     ```
   
   
-  ### Get Request
-  ```
-  http://ring.dais.unive.it:8002/api/ispresent/6a90.pdb
-  ```
-  Response:
-  ```JavaScript
-  {
-    "response": "success",
-    "data": {
-        "code": 200,
-        "message": "File exists"
+### Get Request
+
+ - `http://ring.dais.unive.it:8002/api/ispresent/6a90.pdb`
+    Response:
+    ```JavaScript
+    {
+      "response": "success",
+      "data": {
+          "code": 200,
+          "message": "File exists"
+      }
     }
-  }
-  ```
+    ```
+ - `http://ring.dais.unive.it:8002/api/getpdb/6a90.pdb`
+    Response:
+    ```JavaScript
+    {
+      "response": "success",
+      "data": {
+        "code": 200,
+        "message": "File exists",
+        "pdb": "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN    COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;..."  
+       }
+     }
+    ```
+    
 ## Built With
 * [Node.js](https://nodejs.org/it/) 
  
