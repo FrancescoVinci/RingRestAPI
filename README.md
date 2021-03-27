@@ -105,56 +105,54 @@ Some examples of use:
   
  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
  
-  Sample Json:
-  ```JavaScript
-  {
-    "pdbname" : "6a90.pdb",
-    "seq_sep" : "5",
-    "bond_control" : "weak",
-    "net_policy" : "ca",
-    "h_bond" : "4.5",
-    "ionic_bond" : "4.6"
-  }
-  
-  ```
-  Response:
-  ```JavaScript
-  {
-    "response": "success",
-    "data": {
-        "code": 200,
-        "message": "Processing completed successfully",
-        "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
-        "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ... "
+    Sample Json:
+    ```JavaScript
+    {
+      "pdbname" : "6a90.pdb",
+      "seq_sep" : "5",
+      "bond_control" : "weak",
+      "net_policy" : "ca",
+      "h_bond" : "4.5",
+      "ionic_bond" : "4.6"
     }
-  }
-  ```
-  
-  ```
-  http://ring.dais.unive.it:8002/api/requestxml/fromcontent
-  ```
-  
-  Sample Json:
-  ```JavaScript
-  {
-    "pdbname" : "6a90.pdb",
-    "content" : "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;...",
-    "h_bond" : "4.5",
-    "ionic_bond" : "4.6"
-  }
-  ```
-  Response:
-  ```JavaScript
-  {
-    "response": "success",
-    "data": {
-        "code": 200,
-        "message": "Processing completed successfully",
-        "log": "[2021-03-27 13:44:10.555] [main] [info] params summary: {net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}\n...,
-        "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}-->\n<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" ..."
+
+    ```
+    Response:
+    ```JavaScript
+    {
+      "response": "success",
+      "data": {
+          "code": 200,
+          "message": "Processing completed successfully",
+          "log": "[2021-03-15 20:57:04.728] [main] [info] params summary: {net_policy:\"ca\", generic_bond:7, seq_sep:5, bond_control:\"weak\", interaction_type:\"all\"}\r\n[2021-03-15 20:57:04.777] [main] [info] found 1688 generic bonds\r\n",
+          "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"ca\", ... "
       }
-  }
-  ```
+    }
+    ```
+  
+ - `http://ring.dais.unive.it:8002/api/requestxml/fromcontent`
+  
+    Sample Json:
+    ```JavaScript
+    {
+      "pdbname" : "6a90.pdb",
+      "content" : "HEADER    MEMBRANE PROTEIN/TOXIN                  11-JUL-18   6A90              \nTITLE     COMPLEX OF VOLTAGE-GATED SODIUM CHANNEL NAVPAS FROM AMERICAN COCKROACH\nTITLE    2 PERIPLANETA AMERICANA AND DC1A                                       \nCOMPND    MOL_ID: 1;...",
+      "h_bond" : "4.5",
+      "ionic_bond" : "4.6"
+    }
+    ```
+    Response:
+    ```JavaScript
+    {
+      "response": "success",
+      "data": {
+          "code": 200,
+          "message": "Processing completed successfully",
+          "log": "[2021-03-27 13:44:10.555] [main] [info] params summary: {net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}\n...,
+          "xml": "<?xml version=\"1.0\"?>\n<!--{net_policy:\"closest\", h_bond:4.5, vdw_bond:0.5, ionic_bond:4.6, pication:5, pipistack:6.5, seq_sep:3, bond_control:\"strict\", interaction_type:\"all\"}-->\n<graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\" ..."
+        }
+    }
+    ```
   
   
   ### Get Request
