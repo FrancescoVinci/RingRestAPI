@@ -228,7 +228,7 @@ Some examples of error:
     ```JavaScript
     {
         "pdbname" : "6a90.pdb",
-        "seq_sep" : "400"
+        "seq_sep" : "125"
     }
     ```
     
