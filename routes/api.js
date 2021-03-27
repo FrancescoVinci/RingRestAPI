@@ -7,6 +7,7 @@ const constants = require('../includes/constants');
 const standardJSON = require('../includes/standardJSON');
 require('../includes/function.js')();
 
+
 //check is the .pdb file exists in files.rcsb.org
 router.get('/ispresent/:pdbfile', async(req,res) => {
 
@@ -26,24 +27,28 @@ router.get('/ispresent/:pdbfile', async(req,res) => {
         r.on('error', (error) => {
             console.log('\t' + error);
             res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+            console.log('End');
             return;
         });
 
         if(r.statusCode == constants.NOT_FOUND_CODE){
             console.log(`\tFile ${req.params.pdbfile} does not exist`);
             res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
+            console.log('End');
         }else if(r.statusCode == constants.SUCCESS_CODE){
             console.log(`\tFile ${req.params.pdbfile} exists`);
             res.status(constants.SUCCESS_CODE).json(standardJSON.FILE_EXISTS_JSON);
+            console.log('End');
         }
     });
 
     request.on('error', (error) => {
         console.log('\t' + error);
         res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+        console.log('End');
         return;
     });
-
+    
     request.end();
 
 });
@@ -68,12 +73,14 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
         r.on('error', error => {
             console.log(error);
             res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+            console.log('End');
             return;
         });
 
         if(r.statusCode == constants.NOT_FOUND_CODE){
             console.log(`\tFile ${req.params.pdbfile} does not exist`);
             res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
+            console.log('End');
         }else if(r.statusCode == constants.SUCCESS_CODE){
             r.setEncoding('utf8');
             r.on('data', chunk => {
@@ -89,6 +96,7 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
                         pdb: `${str}`
                     }
                 });
+                console.log('End');
             });
         }
     });
@@ -96,9 +104,10 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
     request.on('error', error => {
         console.log(error);
         res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+        console.log('End');
         return;
     });
-
+    
     request.end();
 });
 
@@ -140,6 +149,7 @@ router.post('/requestxml/fromname', async(req,res) => {
             r.on('error', error => {
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             });
 
@@ -148,6 +158,7 @@ router.post('/requestxml/fromname', async(req,res) => {
             if(r.statusCode == constants.NOT_FOUND_CODE){
                 console.log('\tFile does not exist in rcbs.org');
                 res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
+                console.log('End');
             }else if(r.statusCode == constants.SUCCESS_CODE){
                 console.log('\tGetting file from rcbs.org');
                 r.setEncoding('utf8');
@@ -164,6 +175,7 @@ router.post('/requestxml/fromname', async(req,res) => {
         request.on('error', error => {
             console.log(error);
             res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+            console.log('End');
             return;
         });
 
@@ -178,6 +190,7 @@ router.post('/requestxml/fromname', async(req,res) => {
                 message: error.errors
             }
         });
+        console.log('End');
     });
 });
 
@@ -217,6 +230,7 @@ router.post('/requestxml/fromcontent', async(req,res) => {
                 message: error.errors
             }
         });
+        console.log('End');
     });
 });
 

@@ -3,8 +3,7 @@ const constants = require('../includes/constants');
 const regexpPDB = /^[\w\-_\s]+.pdb$/;
 const regexpINT = /^\+?\d+$/;
 
-//create a json schema for xml requests by name
-//and specifies the type of fields.
+//create a json schema for xml requests by name and specifies the type of fields.
 //Also attaches functions for validation.
 const PostSchemaFromName = mongoose.Schema({
     pdbname: {

@@ -5,6 +5,7 @@ const standardJSON = require('../includes/standardJSON');
 var execFileSync = require("child_process").execFileSync;
 var spawnSync = require("child_process").spawnSync;
 
+
 module.exports = async function(){
 
     //creates an array of parameters to pass to the exe
@@ -57,6 +58,7 @@ module.exports = async function(){
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             }
             console.log('\tCreated '+pdbname);
@@ -69,6 +71,7 @@ module.exports = async function(){
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             }
             
@@ -95,6 +98,7 @@ module.exports = async function(){
                         message: error.message
                     }
                 });
+                console.log('End');
                 return;
             }
 
@@ -106,6 +110,7 @@ module.exports = async function(){
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             }
 
@@ -114,6 +119,7 @@ module.exports = async function(){
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             }
         
@@ -135,6 +141,7 @@ module.exports = async function(){
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
                 return;
             }
 

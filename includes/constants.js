@@ -12,7 +12,7 @@ module.exports = Object.freeze({
     INT_ERR_CODE: 500,
     
     PATH_TO_REDUCE: './RinG/reduce',
-    PATH_TO_RING: './RinG/RING.exe',
+    PATH_TO_RING: './RinG/RING',
 
     PATH_TO_INPUT: './RinG/InputPDB/',
     PATH_TO_REDUCEPDB: './RinG/ReducedPDB/',
