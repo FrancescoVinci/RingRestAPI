@@ -187,39 +187,39 @@ Some examples of use:
 Some examples of error:
 - **Missing mandatory field**
 
-  `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
   
-  Sample Json:
-   ```JavaScript
-   {
-      "h_bond" : "4.5",
-      "inic_bond" : "4.6"
-   }
-   ```
-   (*pdbname missing*)
-   
-   Response:
-   ```Javascript
-   {
-       "response": "error",
-       "error": {
-           "code": 400,
-           "message": {
-               "pdbname": {
-                   "name": "ValidatorError",
-                   "message": "File name is required",
-                   "properties": {
-                       "message": "File name is required",
-                       "type": "required",
-                       "path": "pdbname"
-                   },
-                   "kind": "required",
-                   "path": "pdbname"
-               }
-           }
-       }
-   }
-   ```
+    Sample Json:
+     ```JavaScript
+     {
+        "h_bond" : "4.5",
+        "inic_bond" : "4.6"
+     }
+     ```
+     (*pdbname missing*)
+
+     Response:
+     ```Javascript
+     {
+         "response": "error",
+         "error": {
+             "code": 400,
+             "message": {
+                 "pdbname": {
+                     "name": "ValidatorError",
+                     "message": "File name is required",
+                     "properties": {
+                         "message": "File name is required",
+                         "type": "required",
+                         "path": "pdbname"
+                     },
+                     "kind": "required",
+                     "path": "pdbname"
+                 }
+             }
+         }
+     }
+     ```
 
 ## Built With
 * [Node.js](https://nodejs.org/it/) 
