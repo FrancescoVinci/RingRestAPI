@@ -6,7 +6,7 @@ The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Repre
 ## Endpoints
 You can use the web service at:
 ```
-http://ring.dais.unive.it:8002/api/ {endpoints}
+http://ring.dais.unive.it:8002/api/{endpoints}
 ```
 - `/ispresent/{pdbname.pdb}` *es. 6a90.pdb*
 
