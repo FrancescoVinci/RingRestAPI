@@ -64,7 +64,11 @@ http://ring.dais.unive.it:8002/api/{endpoints}
       generic_bond: Float,                            //default 6
       pication_bond: Float,                           //default 5
       pipistack_bond: Float,                          //default 6.5
-      force: Boolean                                  //default false
+      force: Boolean,                                 //default false
+      h_bond_angle: Float,                            //default 63
+      pication_angle: Float,                          //default 45
+      pipistack_normal_normal: Float,                 //default 90
+      pipistack_normal_centre: Float                  //default 90
   }
   ```
 
@@ -95,7 +99,11 @@ http://ring.dais.unive.it:8002/api/{endpoints}
       generic_bond: Float,                            //default 6
       pication_bond: Float,                           //default 5
       pipistack_bond: Float,                          //default 6.5
-      force: Boolean                                  //default false
+      force: Boolean,                                 //default false
+      h_bond_angle: Float,                            //default 63
+      pication_angle: Float,                          //default 45
+      pipistack_normal_normal: Float,                 //default 90
+      pipistack_normal_centre: Float                  //default 90
   }
   ```
   
