@@ -127,7 +127,11 @@ router.post('/requestxml/fromname', async(req,res) => {
         ionic_bond: req.body.ionic_bond,
         generic_bond: req.body.generic_bond,
         pication_bond: req.body.pication_bond,
-        pipistack_bond: req.body.pipistack_bond
+        pipistack_bond: req.body.pipistack_bond,
+        h_bond_angle: req.body.h_bond_angle,
+        pication_angle: req.body.pication_angle,
+        pipistack_normal_normal: req.body.pipistack_normal_normal,
+        pipistack_normal_centre: req.body.pipistack_normal_centre
     });
 
     post.validate()
@@ -211,7 +215,11 @@ router.post('/requestxml/fromcontent', async(req,res) => {
         ionic_bond: req.body.ionic_bond,
         generic_bond: req.body.generic_bond,
         pication_bond: req.body.pication_bond,
-        pipistack_bond: req.body.pipistack_bond
+        pipistack_bond: req.body.pipistack_bond,
+        h_bond_angle: req.body.h_bond_angle,
+        pication_angle: req.body.pication_angle,
+        pipistack_normal_normal: req.body.pipistack_normal_normal,
+        pipistack_normal_centre: req.body.pipistack_normal_centre
     });
 
     post.validate()

@@ -73,6 +73,42 @@ const PostSchemaFromContent = mongoose.Schema({
         type: Number,
         min: [constants.MIN_PIPISTACK_BOND, `${constants.MIN_MESSAGE} ${constants.MIN_PIPISTACK_BOND}`],
         max: [constants.MAX_LIMIT, constants.MAX_MESSAGE]
+    },
+    h_bond_angle: {
+        type: Number,
+        validate: {
+            validator: function(v){
+                return v > 0;
+            },
+            message: `${constants.NEGATIVE_ANGLE_MESSAGE}`
+        }
+    },
+    pication_angle: {
+        type: Number,
+        validate: {
+            validator: function(v){
+                return v > 0;
+            },
+            message: `${constants.NEGATIVE_ANGLE_MESSAGE}`
+        }
+    },
+    pipistack_normal_normal: {
+        type: Number,
+        validate: {
+            validator: function(v){
+                return v > 0;
+            },
+            message: `${constants.NEGATIVE_ANGLE_MESSAGE}`
+        }
+    },
+    pipistack_normal_centre: {
+        type: Number,
+        validate: {
+            validator: function(v){
+                return v > 0;
+            },
+            message: `${constants.NEGATIVE_ANGLE_MESSAGE}`
+        }
     }
 });
 

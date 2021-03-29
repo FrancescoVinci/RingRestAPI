@@ -37,6 +37,7 @@ module.exports = Object.freeze({
     MAX_MESSAGE_UINT: 'Enter UINTs less than 20',
     MIN_MESSAGE: 'Enter positive Float greater than',
     MIN_MESSAGE_UINT: 'Enter UINTs greater than',
+    NEGATIVE_ANGLE_MESSAGE: 'Enter a positive Number greater than 0',
 
     NOT_VALID_NAME: 'is not a valid file name',
     FILE_NAME_REQ: 'File name is required',

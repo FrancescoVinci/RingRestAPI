@@ -4,6 +4,7 @@ const constants = require('./constants');
 const standardJSON = require('../includes/standardJSON');
 var execFileSync = require("child_process").execFileSync;
 var spawnSync = require("child_process").spawnSync;
+const { param } = require('../routes/api');
 
 
 module.exports = async function(){
@@ -41,6 +42,18 @@ module.exports = async function(){
         }
         if(params.hasOwnProperty('pipistack_bond')){
             paramString.push('--pipistack-bond', params.pipistack_bond);
+        }
+        if(params.hasOwnProperty('h_bond_angle')){
+            paramString.push('--h-bond-angle', params.h_bond_angle);
+        }
+        if(params.hasOwnProperty('pication_angle')){
+            paramString.push('--pication-angle', params.pication_angle);
+        }
+        if(params.hasOwnProperty('pipistack_normal_normal')){
+            paramString.push('--pipistack-normal-normal', params.pipistack_normal_normal);
+        }
+        if(params.hasOwnProperty('pipistack_normal_centre')){
+            paramString.push('--pipistack-normal-centre', params.pipistack_normal_centre);
         }
         return paramString;
     }
