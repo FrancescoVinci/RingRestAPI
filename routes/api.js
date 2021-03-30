@@ -7,7 +7,6 @@ const constants = require('../includes/constants');
 const standardJSON = require('../includes/standardJSON');
 require('../includes/function.js')();
 
-
 //check is the .pdb file exists in files.rcsb.org
 router.get('/ispresent/:pdbfile', async(req,res) => {
 

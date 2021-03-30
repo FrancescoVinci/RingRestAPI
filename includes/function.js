@@ -4,8 +4,6 @@ const constants = require('./constants');
 const standardJSON = require('../includes/standardJSON');
 var execFileSync = require("child_process").execFileSync;
 var spawnSync = require("child_process").spawnSync;
-const { param } = require('../routes/api');
-
 
 module.exports = async function(){
 

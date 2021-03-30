@@ -107,4 +107,5 @@ const PostSchemaFromName = mongoose.Schema({
     }
 });
 
+
 module.exports = mongoose.model('PostFromName', PostSchemaFromName);

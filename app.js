@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const apiRoute = require('./routes/api');
 const cors = require('cors');
 
+
 app.use(function (req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', 'https://www.dsi.unive.it'); 
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
