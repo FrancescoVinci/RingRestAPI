@@ -2,7 +2,7 @@
 
 A Rest API for **RING**.\
 The *RingRestAPI* is organized around [REST](https://en.wikipedia.org/wiki/Representational_state_transfer). The API has predictable URLs, accepts *form-encoded* and *JSON-encoded* request bodies, returns JSON-encoded responses, and uses standard HTTP response codes and verbs.\
-RingRestAPI is accessible after connecting via [Ca’ Foscari University VPN](https://www.unive.it/pag/41366/) for staff members and students.
+RingRestAPI is accessible after connecting via [Ca’ Foscari University VPN](https://www.unive.it/pag/41366/).
 
 ## Endpoints
 You can use the web service at:
@@ -64,7 +64,6 @@ http://ring.dais.unive.it:8002/api/{endpoints}
       generic_bond: Float,                            //default 6
       pication_bond: Float,                           //default 5
       pipistack_bond: Float,                          //default 6.5
-      force: Boolean,                                 //default false
       h_bond_angle: Float,                            //default 63
       pication_angle: Float,                          //default 45
       pipistack_normal_normal: Float,                 //default 90
@@ -99,7 +98,6 @@ http://ring.dais.unive.it:8002/api/{endpoints}
       generic_bond: Float,                            //default 6
       pication_bond: Float,                           //default 5
       pipistack_bond: Float,                          //default 6.5
-      force: Boolean,                                 //default false
       h_bond_angle: Float,                            //default 63
       pication_angle: Float,                          //default 45
       pipistack_normal_normal: Float,                 //default 90
