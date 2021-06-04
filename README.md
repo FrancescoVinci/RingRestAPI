@@ -8,7 +8,7 @@ RingRestAPI is accessible after connecting via [Ca’ Foscari University VPN](ht
 ## Endpoints
 You can use the web service at:
 ```
-http://ring.dais.unive.it:8002/api/{endpoints}
+https://ring.dais.unive.it:8002/api/{endpoints}
 ```
 - `/ispresent/{pdbname.pdb}` *es. 6a90.pdb*
 
@@ -110,7 +110,7 @@ http://ring.dais.unive.it:8002/api/{endpoints}
 Some examples of use:
 ### Post request
   
- - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+ - `https://ring.dais.unive.it:8002/api/requestxml/fromname`
  
     Sample Json:
     ```JavaScript
@@ -137,7 +137,7 @@ Some examples of use:
     }
     ```
   
- - `http://ring.dais.unive.it:8002/api/requestxml/fromcontent`
+ - `https://ring.dais.unive.it:8002/api/requestxml/fromcontent`
   
     Sample Json:
     ```JavaScript
@@ -164,7 +164,7 @@ Some examples of use:
   
 ### Get Request
 
- - `http://ring.dais.unive.it:8002/api/ispresent/6a90.pdb`
+ - `https://ring.dais.unive.it:8002/api/ispresent/6a90.pdb`
  
     Response:
     ```JavaScript
@@ -176,7 +176,7 @@ Some examples of use:
         }
     }
     ```
- - `http://ring.dais.unive.it:8002/api/getpdb/6a90.pdb`
+ - `https://ring.dais.unive.it:8002/api/getpdb/6a90.pdb`
  
     Response:
     ```JavaScript
@@ -194,7 +194,7 @@ Some examples of use:
 Some examples of error:
 - **Missing mandatory field**
 
-  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+  - `https://ring.dais.unive.it:8002/api/requestxml/fromname`
   
     Sample Json:
      ```JavaScript
@@ -229,7 +229,7 @@ Some examples of error:
      ```
 - **Out of bond error**
 
-  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+  - `https://ring.dais.unive.it:8002/api/requestxml/fromname`
 
     Sample Json:
     ```JavaScript
@@ -266,7 +266,7 @@ Some examples of error:
     ```
 - **Type error**
 
-  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+  - `https://ring.dais.unive.it:8002/api/requestxml/fromname`
     
     Sample Json:
     ```JavaScript
@@ -302,7 +302,7 @@ Some examples of error:
     ```
 - **Typo error**
 
-  - `http://ring.dais.unive.it:8002/api/requestxml/fromname`
+  - `https://ring.dais.unive.it:8002/api/requestxml/fromname`
 
     Sample Json:
     ```JavaScript
