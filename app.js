@@ -1,4 +1,6 @@
 const express = require('express');
+const fs = require('fs');
+const https = require('https');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -27,4 +29,9 @@ app.use(bodyParser.urlencoded({
 
 app.use('/api', apiRoute);
 
-app.listen(8002);
+var credentials = {
+	key: fs.readFileSync('#############','utf8'),
+	cert: fs.readFileSync('##############','utf8')
+};
+
+https.createServer(credentials, app).listen(8002);
