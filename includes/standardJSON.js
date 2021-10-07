@@ -24,4 +24,5 @@ module.exports = Object.freeze({
             message: constants.FILE_EXISTS
         }  
     },
+
 });

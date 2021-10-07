@@ -4,6 +4,8 @@ const constants = require('./constants');
 const standardJSON = require('../includes/standardJSON');
 var execFileSync = require("child_process").execFileSync;
 var spawnSync = require("child_process").spawnSync;
+const { param } = require('../routes/api');
+
 
 module.exports = async function(){
 
@@ -77,7 +79,7 @@ module.exports = async function(){
             console.log('\tRunning reduced...');
 
             try{
-                resultred = spawnSync(constants.PATH_TO_REDUCE, [constants.PATH_TO_INPUT+pdbname], {maxBuffer: 1024 * 3072});
+                resultred = spawnSync(constants.PATH_TO_REDUCE, [constants.PATH_TO_INPUT+pdbname], {maxBuffer: 1024 * 204800});
                 fs.writeFileSync(constants.PATH_TO_REDUCEPDB+pdbname, resultred.stdout);
             }catch(error){
                 console.log(error);

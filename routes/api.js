@@ -7,6 +7,7 @@ const constants = require('../includes/constants');
 const standardJSON = require('../includes/standardJSON');
 require('../includes/function.js')();
 
+
 //check is the .pdb file exists in files.rcsb.org
 router.get('/ispresent/:pdbfile', async(req,res) => {
 
@@ -132,6 +133,10 @@ router.post('/requestxml/fromname', async(req,res) => {
         pipistack_normal_normal: req.body.pipistack_normal_normal,
         pipistack_normal_centre: req.body.pipistack_normal_centre
     });
+    const regexpPDB = /^[\w\-_\s]+.pdb$/;
+    if(!post.pdbname.match(regexpPDB)){
+        post.pdbname = post.pdbname + '.pdb';    	
+    }
 
     post.validate()
     .then(() => {
@@ -145,33 +150,47 @@ router.post('/requestxml/fromname', async(req,res) => {
         paramString = createParamString(req.body);
 
         const request = https.request(options, r => {
-
-            console.log('\tRequest submitted to rcbs.org');
-            console.log(`\tStatus code: ${r.statusCode}`);
-
-            r.on('error', error => {
-                console.log(error);
-                res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
-                console.log('End');
-                return;
-            });
-
-            str = '';
-
-            if(r.statusCode == constants.NOT_FOUND_CODE){
-                console.log('\tFile does not exist in rcbs.org');
-                res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
-                console.log('End');
-            }else if(r.statusCode == constants.SUCCESS_CODE){
-                console.log('\tGetting file from rcbs.org');
-                r.setEncoding('utf8');
-                r.on('data', chunk => {
-                    str += chunk;
-                })
-                .on('end', function() {
-                    console.log('\tFile obtained correctly');
-                    createRIN(str, res, post.pdbname, paramString);
+	    var size = r.headers['content.length'];
+            
+            if(size > 52428800){
+                console.log('File size exceeds the maximum limit');
+                res.status(constants.BAD_REQUEST_CODE).json({
+                    response: constants.ERR,
+                    error: {
+                        code: constants.BAD_REQUEST_CODE,
+                        message: 'File size exceeds the maximum limit'
+                    }
                 });
+                console.log('End');
+            } else {
+
+                console.log('\tRequest submitted to rcbs.org');
+                console.log(`\tStatus code: ${r.statusCode}`);
+
+                r.on('error', error => {
+                    console.log(error);
+                    res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                    console.log('End');
+                    return;
+                });
+
+                str = '';
+
+                if(r.statusCode == constants.NOT_FOUND_CODE){
+                    console.log('\tFile does not exist in rcbs.org');
+                    res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
+                    console.log('End');
+                }else if(r.statusCode == constants.SUCCESS_CODE){
+                    console.log('\tGetting file from rcbs.org');
+                    r.setEncoding('utf8');
+                    r.on('data', chunk => {
+                        str += chunk;
+                    })
+                    .on('end', function() {
+                        console.log('\tFile obtained correctly');
+                        createRIN(str, res, post.pdbname, paramString);
+                    });
+                }
             }
         });
 

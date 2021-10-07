@@ -1,5 +1,4 @@
 module.exports = Object.freeze({
-    
     ERR: 'error',
     SUCC: 'success',
     INT_ERR: 'Internal error',

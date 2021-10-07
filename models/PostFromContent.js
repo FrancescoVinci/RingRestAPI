@@ -112,5 +112,4 @@ const PostSchemaFromContent = mongoose.Schema({
     }
 });
 
-
 module.exports = mongoose.model('PostFromContent', PostSchemaFromContent);

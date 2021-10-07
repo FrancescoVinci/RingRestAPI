@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const apiRoute = require('./routes/api');
 const cors = require('cors');
 
-
 app.use(function (req, res, next){
 	res.setHeader('Access-Control-Allow-Origin', 'https://www.dsi.unive.it'); 
 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -30,8 +29,8 @@ app.use(bodyParser.urlencoded({
 app.use('/api', apiRoute);
 
 var credentials = {
-	key: fs.readFileSync('#############','utf8'),
-	cert: fs.readFileSync('##############','utf8')
+	key: fs.readFileSync('/etc/letsencrypt/live/ring.dais.unive.it/privkey.pem','utf8'),
+	cert: fs.readFileSync('/etc/letsencrypt/live/ring.dais.unive.it/fullchain.pem','utf8')
 };
 
 https.createServer(credentials, app).listen(8002);

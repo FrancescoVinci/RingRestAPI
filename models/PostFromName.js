@@ -7,13 +7,7 @@ const regexpINT = /^\+?\d+$/;
 //Also attaches functions for validation.
 const PostSchemaFromName = mongoose.Schema({
     pdbname: {
-        type: String, 
-        validate: {
-            validator: function(v){
-                return v.match(regexpPDB);
-            },
-            message: props => `${props.value} ${constants.NOT_VALID_NAME}`
-        },
+        type: String,
         required: [true , constants.FILE_NAME_REQ]
     },
     seq_sep: {
@@ -106,6 +100,5 @@ const PostSchemaFromName = mongoose.Schema({
         }
     }
 });
-
 
 module.exports = mongoose.model('PostFromName', PostSchemaFromName);
