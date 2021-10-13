@@ -23,6 +23,12 @@ module.exports = async function(){
             paramString.push('--interaction-type', params.interaction_type);
         }
         if(params.hasOwnProperty('net_policy')){
+            var netPolicy = params.net_policy;
+            if(netPolicy == "Ca"){
+                params.net_policy = "ca";
+            } else if(netPolicy == "Cb"){
+                params.net_policy = "cb";
+            }
             paramString.push('--net-policy', params.net_policy);
         }
         if(params.hasOwnProperty('h_bond')){
@@ -62,6 +68,8 @@ module.exports = async function(){
     this.createRIN = function(content, res, pdbname, paramString){
 
         lockFile.lock(constants.PATH_TO_INPUT + pdbname, function (er) {
+
+
 
             //creates a pdb file at the specified path
             console.log('\tCreating ' + pdbname+'...');
