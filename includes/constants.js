@@ -31,7 +31,7 @@ module.exports = Object.freeze({
 
     BOND_CONTROL: ['strict','weak'],
     INTERACTION_TYPE: ['all','multiple','one'],
-    NET_POLICY: ['closest','ca','cb'],
+    NET_POLICY: ['closest','Ca','Cb'],
 
     MAX_MESSAGE: 'Enter positive Float less than 20',
     MAX_MESSAGE_UINT: 'Enter UINTs less than 20',
