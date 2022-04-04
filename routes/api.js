@@ -7,6 +7,7 @@ const constants = require('../includes/constants');
 const standardJSON = require('../includes/standardJSON');
 require('../includes/function.js')();
 
+const ARCHIVE_URL = 'files.rcsb.org';
 
 //check is the .pdb file exists in files.rcsb.org
 router.get('/ispresent/:pdbfile', async(req,res) => {
@@ -14,11 +15,11 @@ router.get('/ispresent/:pdbfile', async(req,res) => {
     console.log('[/ispresent]:Incoming Get request');
 
     const requestOption = {
-        hostname: 'files.rcsb.org',
+        hostname: ARCHIVE_URL,
         method: 'HEAD',
         path: '/view/' + req.params.pdbfile
     }
-    
+
     const request = https.request(requestOption, r => {
 
         console.log('\tRequest submitted to rcbs.org');
@@ -28,14 +29,13 @@ router.get('/ispresent/:pdbfile', async(req,res) => {
             console.log('\t' + error);
             res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
             console.log('End');
-            return;
         });
 
-        if(r.statusCode == constants.NOT_FOUND_CODE){
+        if(r.statusCode === constants.NOT_FOUND_CODE){
             console.log(`\tFile ${req.params.pdbfile} does not exist`);
             res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
             console.log('End');
-        }else if(r.statusCode == constants.SUCCESS_CODE){
+        }else if(r.statusCode === constants.SUCCESS_CODE){
             console.log(`\tFile ${req.params.pdbfile} exists`);
             res.status(constants.SUCCESS_CODE).json(standardJSON.FILE_EXISTS_JSON);
             console.log('End');
@@ -46,9 +46,8 @@ router.get('/ispresent/:pdbfile', async(req,res) => {
         console.log('\t' + error);
         res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
         console.log('End');
-        return;
     });
-    
+
     request.end();
 
 });
@@ -59,7 +58,7 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
     console.log('[/getpdb]:Incoming Get request');
 
     const requestOption = {
-        hostname: 'files.rcsb.org',
+        hostname: ARCHIVE_URL,
         method: 'GET',
         path: '/view/' + req.params.pdbfile
     }
@@ -74,30 +73,29 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
             console.log(error);
             res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
             console.log('End');
-            return;
         });
 
-        if(r.statusCode == constants.NOT_FOUND_CODE){
+        if(r.statusCode === constants.NOT_FOUND_CODE){
             console.log(`\tFile ${req.params.pdbfile} does not exist`);
             res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
             console.log('End');
-        }else if(r.statusCode == constants.SUCCESS_CODE){
+        }else if(r.statusCode === constants.SUCCESS_CODE){
             r.setEncoding('utf8');
             r.on('data', chunk => {
                 str += chunk;
             })
-            .on('end', function() {
-                console.log(`\tFile ${req.params.pdbfile} exists`);
-                res.status(constants.SUCCESS_CODE).json({
-                    response: constants.SUCC,
-                    data: {
-                        code: constants.SUCCESS_CODE,
-                        message: constants.FILE_EXISTS,
-                        pdb: `${str}`
-                    }
+                .on('end', function() {
+                    console.log(`\tFile ${req.params.pdbfile} exists`);
+                    res.status(constants.SUCCESS_CODE).json({
+                        response: constants.SUCC,
+                        data: {
+                            code: constants.SUCCESS_CODE,
+                            message: constants.FILE_EXISTS,
+                            pdb: `${str}`
+                        }
+                    });
+                    console.log('End');
                 });
-                console.log('End');
-            });
         }
     });
 
@@ -105,9 +103,8 @@ router.get('/getpdb/:pdbfile', async(req,res) => {
         console.log(error);
         res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
         console.log('End');
-        return;
     });
-    
+
     request.end();
 });
 
@@ -135,85 +132,82 @@ router.post('/requestxml/fromname', async(req,res) => {
     });
     const regexpPDB = /^[\w\-_\s]+.pdb$/;
     if(!post.pdbname.match(regexpPDB)){
-        post.pdbname = post.pdbname + '.pdb';    	
+        post.pdbname = post.pdbname + '.pdb';
     }
 
     post.validate()
-    .then(() => {
-       
-        const options = {
-            hostname: "files.rcsb.org",
-            method: 'GET',
-            path: "/view/"+ post.pdbname
-        }
+        .then(() => {
 
-        paramString = createParamString(req.body);
+            const options = {
+                hostname: ARCHIVE_URL,
+                method: 'GET',
+                path: "/view/"+ post.pdbname
+            }
 
-        const request = https.request(options, r => {
-	    var size = r.headers['content.length'];
-            
-            if(size > 52428800){
-                console.log('File size exceeds the maximum limit');
-                res.status(constants.BAD_REQUEST_CODE).json({
-                    response: constants.ERR,
-                    error: {
-                        code: constants.BAD_REQUEST_CODE,
-                        message: 'File size exceeds the maximum limit'
-                    }
-                });
-                console.log('End');
-            } else {
+            paramString = createParamString(req.body);
 
-                console.log('\tRequest submitted to rcbs.org');
-                console.log(`\tStatus code: ${r.statusCode}`);
-
-                r.on('error', error => {
-                    console.log(error);
-                    res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
-                    console.log('End');
-                    return;
-                });
-
-                str = '';
-
-                if(r.statusCode == constants.NOT_FOUND_CODE){
-                    console.log('\tFile does not exist in rcbs.org');
-                    res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
-                    console.log('End');
-                }else if(r.statusCode == constants.SUCCESS_CODE){
-                    console.log('\tGetting file from rcbs.org');
-                    r.setEncoding('utf8');
-                    r.on('data', chunk => {
-                        str += chunk;
-                    })
-                    .on('end', function() {
-                        console.log('\tFile obtained correctly');
-                        createRIN(str, res, post.pdbname, paramString);
+            const request = https.request(options, r => {
+                let size = r.headers['content.length'];
+                if(size > 52428800){
+                    console.log('File size exceeds the maximum limit');
+                    res.status(constants.BAD_REQUEST_CODE).json({
+                        response: constants.ERR,
+                        error: {
+                            code: constants.BAD_REQUEST_CODE,
+                            message: 'File size exceeds the maximum limit'
+                        }
                     });
+                    console.log('End');
+                } else {
+
+                    console.log('\tRequest submitted to rcbs.org');
+                    console.log(`\tStatus code: ${r.statusCode}`);
+
+                    r.on('error', error => {
+                        console.log(error);
+                        res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                        console.log('End');
+                    });
+
+                    str = '';
+
+                    if(r.statusCode === constants.NOT_FOUND_CODE){
+                        console.log('\tFile does not exist in rcbs.org');
+                        res.status(constants.NOT_FOUND_CODE).json(standardJSON.NOT_FOUND_JSON);
+                        console.log('End');
+                    }else if(r.statusCode === constants.SUCCESS_CODE){
+                        console.log('\tGetting file from rcbs.org');
+                        r.setEncoding('utf8');
+                        r.on('data', chunk => {
+                            str += chunk;
+                        })
+                            .on('end', function() {
+                                console.log('\tFile obtained correctly');
+                                createRIN(str, res, post.pdbname, paramString);
+                            });
+                    }
                 }
-            }
-        });
+            });
 
-        request.on('error', error => {
-            console.log(error);
-            res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+            request.on('error', error => {
+                console.log(error);
+                res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
+                console.log('End');
+            });
+
+            request.end();
+        })
+        .catch(error => {
+            console.log(error.errors);
+            res.status(constants.BAD_REQUEST_CODE).json({
+                response: constants.ERR,
+                error: {
+                    code: constants.BAD_REQUEST_CODE,
+                    message: error.errors
+                }
+            });
             console.log('End');
-            return;
         });
-
-        request.end();
-    })
-    .catch(error => {
-        console.log(error.errors);
-        res.status(constants.BAD_REQUEST_CODE).json({
-            response: constants.ERR,
-            error: {
-                code: constants.BAD_REQUEST_CODE,
-                message: error.errors
-            }
-        });
-        console.log('End');
-    });
 });
 
 //returns an xml of the specified .pdb from content
@@ -241,23 +235,23 @@ router.post('/requestxml/fromcontent', async(req,res) => {
     });
 
     post.validate()
-    .then(() => {
-        paramString = createParamString(req.body);
+        .then(() => {
+            paramString = createParamString(req.body);
 
-        console.log('\tGetting file from the content field');
-        createRIN(post.content, res, post.pdbname, paramString);
-    })
-    .catch(error => {
-        console.log(error.errors);
-        res.status(constants.BAD_REQUEST_CODE).json({
-            response: constants.ERR,
-            error: {
-                code: constants.BAD_REQUEST_CODE,
-                message: error.errors
-            }
+            console.log('\tGetting file from the content field');
+            createRIN(post.content, res, post.pdbname, paramString);
+        })
+        .catch(error => {
+            console.log(error.errors);
+            res.status(constants.BAD_REQUEST_CODE).json({
+                response: constants.ERR,
+                error: {
+                    code: constants.BAD_REQUEST_CODE,
+                    message: error.errors
+                }
+            });
+            console.log('End');
         });
-        console.log('End');
-    });
 });
 
 module.exports = router;

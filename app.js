@@ -5,7 +5,6 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 const app = express();
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const apiRoute = require('./routes/api');
 const cors = require('cors');

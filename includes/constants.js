@@ -10,14 +10,14 @@ module.exports = Object.freeze({
     NOT_FOUND_CODE: 404,
     SUCCESS_CODE: 200,
     INT_ERR_CODE: 500,
-    
-    PATH_TO_REDUCE: './RinG/reduce',
-    PATH_TO_RING: './RinG/RING',
 
-    PATH_TO_INPUT: './RinG/InputPDB/',
-    PATH_TO_REDUCEPDB: './RinG/ReducedPDB/',
-    PATH_TO_LOG: './RinG/logs',
-    PATH_TO_OUTPUT: './RinG/OutputXML/',
+    PATH_TO_REDUCE: process.env.PATH_TO_REDUCE || './workdir/reduce',
+    PATH_TO_RINMAKER: process.env.PATH_TO_REDUCE || './workdir/RINmaker',
+
+    PATH_TO_INPUT: './workdir/input_pdb/',
+    PATH_TO_REDUCEPDB: './workdir/reduced_pdb/',
+    PATH_TO_LOG: './workdir/logs/',
+    PATH_TO_OUTPUT: './workdir/output_xml/',
     FILE_LOG_NAME: 'main.txt',
 
     MAX_LIMIT: 20.0,

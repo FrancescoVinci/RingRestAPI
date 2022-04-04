@@ -2,9 +2,8 @@ const fs = require('fs')
 const lockFile = require('lockfile');
 const constants = require('./constants');
 const standardJSON = require('../includes/standardJSON');
-var execFileSync = require("child_process").execFileSync;
-var spawnSync = require("child_process").spawnSync;
-const { param } = require('../routes/api');
+let execFileSync = require("child_process").execFileSync;
+let spawnSync = require("child_process").spawnSync;
 
 
 module.exports = async function(){
@@ -12,7 +11,7 @@ module.exports = async function(){
     //creates an array of parameters to pass to the exe
     this.createParamString = function(params){
 
-        paramString = [];
+        let paramString = [];
         if(params.hasOwnProperty('seq_sep')){
             paramString.push('--seq-sep', params.seq_sep);
         }
@@ -23,10 +22,10 @@ module.exports = async function(){
             paramString.push('--interaction-type', params.interaction_type);
         }
         if(params.hasOwnProperty('net_policy')){
-            var netPolicy = params.net_policy;
-            if(netPolicy == "Ca"){
+            let netPolicy = params.net_policy;
+            if(netPolicy === "Ca"){
                 params.net_policy = "ca";
-            } else if(netPolicy == "Cb"){
+            } else if(netPolicy === "Cb"){
                 params.net_policy = "cb";
             }
             paramString.push('--net-policy', params.net_policy);
@@ -69,47 +68,45 @@ module.exports = async function(){
 
         lockFile.lock(constants.PATH_TO_INPUT + pdbname, function (er) {
 
-
-
             //creates a pdb file at the specified path
-            console.log('\tCreating ' + pdbname+'...');
+            console.log('\tCreating ' + pdbname + '...');
 
             try{
-                fs.writeFileSync(constants.PATH_TO_INPUT+pdbname, content);
+                fs.writeFileSync(constants.PATH_TO_INPUT + pdbname, content);
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
                 console.log('End');
                 return;
             }
-            console.log('\tCreated '+pdbname);
+            console.log('\tCreated ' + pdbname);
 
             console.log('\tRunning reduced...');
 
             try{
-                resultred = spawnSync(constants.PATH_TO_REDUCE, [constants.PATH_TO_INPUT+pdbname], {maxBuffer: 1024 * 204800});
-                fs.writeFileSync(constants.PATH_TO_REDUCEPDB+pdbname, resultred.stdout);
+                resultred = spawnSync(constants.PATH_TO_REDUCE, [constants.PATH_TO_INPUT + pdbname], {maxBuffer: 1024 * 204800});
+                fs.writeFileSync(constants.PATH_TO_REDUCEPDB + pdbname, resultred.stdout);
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
                 console.log('End');
                 return;
             }
-            
-            console.log('\tExecuted successfully');     
+
+            console.log('\tExecuted successfully');
 
             //concatenates the various parameters
-            paths = ['-l', constants.PATH_TO_LOG, '-o', constants.PATH_TO_OUTPUT+pdbname+'.xml'];
+            paths = ['-l', constants.PATH_TO_LOG, '-o', constants.PATH_TO_OUTPUT + pdbname + '.xml'];
             params = paths.concat(paramString);
             params.push(constants.PATH_TO_REDUCEPDB + pdbname);
 
             console.log('\tArgs pass to exe: ' + params);
 
-            //pass everything to the exe and execute 
+            //pass everything to the exe and execute
             console.log('\tRunning exe...');
 
             try{
-                result = execFileSync(constants.PATH_TO_RING, params);
+                result = execFileSync(constants.PATH_TO_RINMAKER, params);
             }catch(error){
                 console.log(error);
                 res.status(constants.BAD_REQUEST_CODE).json({
@@ -124,10 +121,10 @@ module.exports = async function(){
             }
 
             console.log('\tExecuted successfully');
-            
+
             //inserts the output of the exe into xmldoc
             try{
-                xmldoc = fs.readFileSync(constants.PATH_TO_OUTPUT+pdbname+'.xml');
+                xmldoc = fs.readFileSync(constants.PATH_TO_OUTPUT + pdbname + '.xml');
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
@@ -136,27 +133,27 @@ module.exports = async function(){
             }
 
             try{
-                log = fs.readFileSync('./RinG/logs/main.txt');
+                log = fs.readFileSync(constants.PATH_TO_LOG + constants.FILE_LOG_NAME);
             }catch(error){
                 console.log(error);
                 res.status(constants.INT_ERR_CODE).json(standardJSON.STDERR_JSON);
                 console.log('End');
                 return;
             }
-        
+
             // delete the files created
             console.log('\tDeleting residual files...');
             try{
-                fs.unlinkSync(constants.PATH_TO_INPUT+pdbname);
-                console.log('\tDeleted '+pdbname);
+                fs.unlinkSync(constants.PATH_TO_INPUT + pdbname);
+                console.log('\tDeleted ' + pdbname);
 
-                fs.unlinkSync(constants.PATH_TO_OUTPUT+pdbname+'.xml');
-                console.log('\tDeleted '+pdbname+'.xml');
+                fs.unlinkSync(constants.PATH_TO_OUTPUT + pdbname + '.xml');
+                console.log('\tDeleted ' + pdbname + '.xml');
 
-                fs.unlinkSync(constants.PATH_TO_REDUCEPDB+pdbname);
-                 console.log('\tDeleted '+pdbname);
-                
-                fs.unlinkSync(constants.PATH_TO_LOG+'/'+constants.FILE_LOG_NAME);
+                fs.unlinkSync(constants.PATH_TO_REDUCEPDB + pdbname);
+                 console.log('\tDeleted ' + pdbname);
+
+                fs.unlinkSync(constants.PATH_TO_LOG + constants.FILE_LOG_NAME);
                 console.log('\tDeleted main.txt in logs directory');
 
             }catch(error){
@@ -177,7 +174,6 @@ module.exports = async function(){
                     xml: xmldoc.toString()
                 }
             });
-            return;
-        }); 
+        });
     }
 }
